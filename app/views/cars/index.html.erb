@@ -1,0 +1,10 @@
+<h1>Displaying the brand and model of cars:</h1>
+<p>
+  <% @cars.each do |car|%>
+    <h1> <%= car.brand %></h1>
+    <h2><%= car.model %></h2>
+    <p><%= car.created_at.strftime("%a %b %e at %H:%M %P") %></p>
+    <p><%= car.owner.nickname %></p>
+  <hr>
+  <% end %>
+</p>

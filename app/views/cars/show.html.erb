@@ -2,3 +2,10 @@
 <h1><%= @car.brand %></h1>
 <h2><%= @car.model %></h2>
 <p><%= @car.year %></p>
+
+<%= simple_form_for @car.owner do |f| %>
+  <%= f.input :nickname %>
+  <%= f.button :submit %>
+<% end %>
+
+<!-- simple form >

@@ -2,10 +2,28 @@
 <h1><%= @car.brand %></h1>
 <h2><%= @car.model %></h2>
 <p><%= @car.year %></p>
+<% if @car.favourites.empty?%>
+  <%= simple_form_for [@car, @favourite] do |f| %>
+  <%= f.submit "Add favourite", class: "btn btn-primary"%>
+  <% end %>
+<% else%>
+  <p>This car is favourited.</p>
+<% end%>
 
-<%= simple_form_for @car.owner do |f| %>
-  <%= f.input :nickname %>
-  <%= f.button :submit %>
+<h2>Leave a comment:</h2>
+<%= simple_form_for [@car, @review] do |f| %>
+  <%= f.input :comment %>
+  <%= f.input :rating %>
+  <%= f.submit "Submit review", class: "btn btn-primary"%>
 <% end %>
 
-<!-- simple form >
+<p>
+  <% @car.reviews.each do |review|%>
+    <h1> <%= review.comment %></h1>
+    <h2><%= review.rating %></h2>
+    <p><%= review.created_at.strftime("%a %b %e at %H:%M %P") %></p>
+  <hr>
+  <% end %>
+</p>
+
+<p><%= link_to "Back", cars_path %></p>

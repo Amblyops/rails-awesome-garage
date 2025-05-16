@@ -1,0 +1,11 @@
+<h1>Displaying the brand and model of cars in the garage:</h1>
+<p>
+  <% @favourites.each do |favourite|%>
+    <h2> <%= favourite.car.brand %></h2>
+    <h3><%= favourite.car.model %></h3>
+<!-- to code this so that all the details of the car show with an hr as in the car index-->
+    <%= link_to 'delete', favourite_path(favourite), data: { turbo_method: :delete, turbo_confirm:'Are you sure you want to remove this car?'}%>
+  <hr>
+  <% end %>
+</p>
+<p><%= link_to "Back", cars_path %></p>
